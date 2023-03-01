@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { ImageBackground, View } from "react-native";
 import { Text, Button, useTheme, IconButton } from "react-native-paper";
+import Main from "../../components/Main";
 
 export default function Connexion() {
   const theme = useTheme();
@@ -10,7 +11,7 @@ export default function Connexion() {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <Main fullWidth hideHeader hideNavigation statusBarStyle="light">
       <ImageBackground
         source={image}
         resizeMode="cover"
@@ -21,7 +22,7 @@ export default function Connexion() {
         <View
           style={{
             flex: 1,
-            backgroundColor: "rgba(0,0,0, 0.40)",
+            backgroundColor: "rgba(0,0,0, 0.45)",
             justifyContent: "flex-end",
             paddingBottom: 10,
             paddingHorizontal: 30,
@@ -42,11 +43,10 @@ export default function Connexion() {
               marginVertical: 5,
             }}
           >
-            Vous êtes à quelque pas de Eufron
+            Vous êtes à quelque pas d'Eufron
           </Text>
         </View>
       </ImageBackground>
-
       <View
         style={{
           minHeight: "30%",
@@ -64,13 +64,12 @@ export default function Connexion() {
             justifyContent: "space-between",
           }}
         >
-          <IconButton icon="google" mode="contained" size={32} />
-          <IconButton icon="facebook" mode="contained" size={32} />
-          <IconButton icon="apple" mode="contained" size={32} />
-          <IconButton icon="email" mode="contained" size={32} />
+          <IconButton icon="google" mode="contained" size={40} />
+          <IconButton icon="facebook" mode="contained" size={40} />
+          <IconButton icon="apple" mode="contained" size={40} />
+          <IconButton icon="email" mode="contained" size={40} />
         </View>
       </View>
-      <StatusBar style="light" />
-    </View>
+    </Main>
   );
 }

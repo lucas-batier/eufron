@@ -9,3 +9,7 @@ Sport mobile application.
 3. Scan the QR code from your iPhone (check link below for Androïd)
 
 More details here: https://reactnative.dev/docs/environment-setup
+
+## Coding standards
+
+PropTypes are required for each components
