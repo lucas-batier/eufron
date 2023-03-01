@@ -42,7 +42,7 @@ export default function Connexion() {
               marginVertical: 5,
             }}
           >
-            Vous êtes à quelque pas de SportApp
+            Vous êtes à quelque pas de Eufron
           </Text>
         </View>
       </ImageBackground>

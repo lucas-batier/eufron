@@ -17,7 +17,6 @@ export default function SignIn() {
   const theme = useTheme();
 
   return (
-
     <Main action={console.log("Sign in action here")} hideNavigation>
       <View style={styles.layoutForm}>
         <View style={styles.oauth}>
