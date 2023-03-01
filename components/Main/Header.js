@@ -27,6 +27,7 @@ export default function Header({
           icon={action.icon}
           color={theme.colors.primary}
           size={32}
+          disabled={action.disabled}
           onPress={action.onPress}
         />
       ))}
@@ -43,6 +44,7 @@ Header.propTypes = {
     PropTypes.shape({
       label: PropTypes.string,
       icon: PropTypes.string,
+      disabled: PropTypes.bool,
       onPress: PropTypes.func,
     })
   ),
@@ -50,6 +52,7 @@ Header.propTypes = {
     PropTypes.shape({
       label: PropTypes.string,
       icon: PropTypes.string,
+      disabled: PropTypes.bool,
       onPress: PropTypes.func,
     })
   ),

@@ -1,4 +1,4 @@
-import { SafeAreaView, View } from "react-native";
+import { View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Connexion from "./pages/Connexion";
 import SignIn from "./pages/Connexion/SignIn";

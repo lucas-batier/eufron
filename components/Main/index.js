@@ -53,6 +53,7 @@ Main.propTypes = {
     PropTypes.shape({
       label: PropTypes.string,
       icon: PropTypes.string,
+      disabled: PropTypes.bool,
       onPress: PropTypes.func,
     })
   ),
@@ -60,6 +61,7 @@ Main.propTypes = {
     PropTypes.shape({
       label: PropTypes.string,
       icon: PropTypes.string,
+      disabled: PropTypes.bool,
       onPress: PropTypes.func,
     })
   ),

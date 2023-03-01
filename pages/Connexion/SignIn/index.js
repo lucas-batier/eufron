@@ -14,6 +14,8 @@ export default function SignIn() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
 
+  const [disabled, setDisabled] = useState(true);
+
   const theme = useTheme();
 
   return (
@@ -23,6 +25,7 @@ export default function SignIn() {
         {
           icon: "login-variant",
           label: "Se connecter",
+          disabled: disabled,
           onPress: () => console.log("Sign in actions here @todo"),
         },
       ]}
