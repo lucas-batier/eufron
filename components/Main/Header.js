@@ -11,7 +11,7 @@ export default function Header({
   const _handleMore = () => console.log("Handle more @todo");
 
   return (
-    <Appbar.Header style={{borderBottomWidth: 1}}>
+    <Appbar.Header>
       {onPressBackAction && (
         <Appbar.Action
           icon="arrow-left"

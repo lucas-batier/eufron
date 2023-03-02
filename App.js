@@ -1,7 +1,8 @@
 import { View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import Connexion from "./pages/Connexion";
-import SignIn from "./pages/Connexion/SignIn";
+import SignUpProfilePage from "./pages/ConnexionPage/SignUpPage/SignUpProfilePage";
+import SignInPage from "./pages/ConnexionPage/SignInPage";
+import SignUpPage from "./pages/ConnexionPage/SignUpPage";
 
 export default function App() {
   return (
@@ -11,7 +12,7 @@ export default function App() {
           flex: 1,
         }}
       >
-        <SignIn />
+        <SignUpProfilePage />
       </View>
     </SafeAreaProvider>
   );
