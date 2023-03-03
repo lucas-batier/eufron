@@ -46,14 +46,14 @@ export default function SignUpPage() {
           <TextInput
             onChangeText={onChangeEmail}
             value={email}
-            placeholder="Email"
+            label="Email"
             inputMode="email"
             autoFocus
           />
           <TextInput
             onChangeText={onChangePassword}
             value={password}
-            placeholder="Mot de passe"
+            label="Mot de passe"
             secureTextEntry
           />
 

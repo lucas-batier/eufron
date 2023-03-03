@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import {
-  TextInput,
-  Button,
-  useTheme,
-  IconButton,
-} from "react-native-paper";
+import { TextInput, Button, useTheme, IconButton } from "react-native-paper";
 import Main from "../../../components/Main";
 
 export default function SignInPage() {
@@ -30,11 +25,7 @@ export default function SignInPage() {
       onPressBackAction={() => console.log("Back actions here @todo")}
       hideNavigation
     >
-      <View
-        style={{
-          rowGap: 15,
-        }}
-      >
+      <View style={{ rowGap: 15 }}>
         <View
           style={{
             flexDirection: "row",
@@ -49,17 +40,17 @@ export default function SignInPage() {
           <TextInput
             onChangeText={onChangeEmail}
             value={email}
-            placeholder="Email"
+            label="Email"
             inputMode="email"
             autoFocus
           />
           <TextInput
             onChangeText={onChangePassword}
             value={password}
-            placeholder="Mot de passe"
+            label="Mot de passe"
             secureTextEntry
           />
-          <View style={{ flexDirection: "row"}}>
+          <View style={{ flexDirection: "row" }}>
             <Button mode="text" textColor={theme.colors.primary}>
               Mot de passe oublié
             </Button>

@@ -14,7 +14,7 @@ export default function Header({
     <Appbar.Header>
       {onPressBackAction && (
         <Appbar.Action
-          icon="arrow-left"
+          icon="chevron-left"
           color={theme.colors.primary}
           size={32}
           onPress={onPressBackAction}

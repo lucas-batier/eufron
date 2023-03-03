@@ -1,8 +1,9 @@
 import { View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import SignUpProfilePage from "./pages/ConnexionPage/SignUpPage/SignUpProfilePage";
 import SignInPage from "./pages/ConnexionPage/SignInPage";
 import SignUpPage from "./pages/ConnexionPage/SignUpPage";
+import SignUpProfilePageDetails from "./pages/ConnexionPage/SignUpPage/SignUpProfilePageDetails";
+import SignUpProfilePageName from "./pages/ConnexionPage/SignUpPage/SignUpProfilePageName";
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
           flex: 1,
         }}
       >
-        <SignUpProfilePage />
+        <SignUpProfilePageName />
       </View>
     </SafeAreaProvider>
   );

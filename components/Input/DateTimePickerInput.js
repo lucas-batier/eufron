@@ -37,6 +37,7 @@ export default function DateTimePickerInput({
     <View>
       <TextInput
         editable={false}
+        label={label}
         value={selectedDateLabel}
         placeholder={placeholder}
         autoFocus={autoFocus}
