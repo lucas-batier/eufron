@@ -7,7 +7,7 @@ export default function LogIn() {
   const navigation = useNavigation();
 
   const image = {
-    uri: "https://images.pexels.com/photos/3766211/pexels-photo-3766211.jpeg",
+    uri: "https://images.pexels.com/photos/3766211/pexels-photo-3766211.jpeg", // @todo store in assets
   };
 
   return (

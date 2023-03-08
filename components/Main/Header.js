@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 export default function Header({ options, navigation }) {
   const theme = useTheme();
 
-  const { title, actions, moreActions } = options;
-
-  const _handleMore = () => console.log("Handle more @todo");
+  const { title, rightActions } = options;
 
   return (
     <Appbar.Header>
@@ -19,7 +17,7 @@ export default function Header({ options, navigation }) {
         />
       )}
       <Appbar.Content title={title} />
-      {actions?.map((action, index) => (
+      {rightActions?.map((action, index) => (
         <Appbar.Action
           key={index}
           icon={action.icon}
@@ -29,9 +27,6 @@ export default function Header({ options, navigation }) {
           onPress={action.onPress}
         />
       ))}
-      {moreActions && (
-        <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-      )}
     </Appbar.Header>
   );
 }
@@ -39,15 +34,7 @@ export default function Header({ options, navigation }) {
 Header.propTypes = {
   options: PropTypes.shape({
     title: PropTypes.string,
-    actions: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string,
-        icon: PropTypes.string,
-        disabled: PropTypes.bool,
-        onPress: PropTypes.func,
-      })
-    ),
-    moreActions: PropTypes.arrayOf(
+    rightActions: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string,
         icon: PropTypes.string,

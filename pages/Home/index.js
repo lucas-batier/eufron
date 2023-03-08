@@ -1,15 +1,5 @@
-import { useContext } from "react";
-import { View } from "react-native";
-import { Button } from "react-native-paper";
-import Main from "../../components/Main";
-import { AuthContext } from "../../context/AuthContext";
+import Profile from "../Profile";
 
 export default function Home() {
-  const { signOut } = useContext(AuthContext);
-
-  return (
-    <Main>
-      <Button onPress={signOut}>Déconnexion</Button>
-    </Main>
-  );
+  return <Profile />;
 }

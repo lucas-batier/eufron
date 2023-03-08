@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Header from "../../components/Main/Header";
 import LogIn from "./LogIn";
 import ForgotPassword from "./SignIn/ForgotPassword";
+import { Button } from "react-native-paper";
 
 const Stack = createStackNavigator();
 

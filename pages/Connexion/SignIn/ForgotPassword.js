@@ -1,18 +1,10 @@
 import { useState } from "react";
 import { View } from "react-native";
-import {
-  TextInput,
-  Button,
-  useTheme,
-  IconButton,
-  Text,
-} from "react-native-paper";
+import { TextInput, Button, useTheme, Text } from "react-native-paper";
 import Main from "../../../components/Main";
 import { useNavigation } from "@react-navigation/native";
 
 export default function ForgotPassword() {
-  const navigation = useNavigation();
-
   const [email, onChangeEmail] = useState("");
 
   const [disabled, setDisabled] = useState(true);
@@ -35,7 +27,7 @@ export default function ForgotPassword() {
             <Button
               mode="contained"
               icon="send"
-              disabled
+              disabled={disabled}
               onPress={() => console.log("handle forget password")}
             >
               Envoyer

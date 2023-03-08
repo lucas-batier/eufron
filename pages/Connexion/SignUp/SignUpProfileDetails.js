@@ -15,15 +15,6 @@ export default function SignUpProfileDetails() {
   return (
     <Main
       title="Infos"
-      actions={[
-        {
-          icon: "arrow-right",
-          label: "Continuer",
-          disabled: disabled,
-          onPress: () => console.log("Sign in actions here @todo"),
-        },
-      ]}
-      onPressBackAction={() => console.log("Back actions here @todo")}
       hideNavigation
     >
       <ScrollView>
