@@ -6,7 +6,6 @@ import Connexion from "./pages/Connexion";
 import Loading from "./pages/Loading";
 import { useEffect, useMemo, useReducer } from "react";
 import { AuthContext } from "./context/AuthContext";
-import Home from "./pages/Main/Home";
 import Header from "./components/Layout/Header";
 import Main from "./pages/Main";
 import { theme } from "./theme";
