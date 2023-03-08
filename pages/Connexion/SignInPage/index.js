@@ -1,24 +1,16 @@
-import { useContext, useState } from "react";
-import { View } from "react-native";
-import {
-  TextInput,
-  Button,
-  useTheme,
-  IconButton,
-  Text,
-} from "react-native-paper";
+import { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { TextInput, Button, useTheme, IconButton } from "react-native-paper";
 import Layout from "../../../components/Layout";
-import { useNavigation } from "@react-navigation/native";
-import { AuthContext } from "../../../context/AuthContext";
+import PropTypes from "prop-types";
 
-export default function SignIn() {
-  const theme = useTheme();
-  const navigation = useNavigation();
-  const { signIn } = useContext(AuthContext);
-
+export default function SignIn({ navigation }) {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
-  const [disabled, setDisabled] = useState(false);
+
+  const [disabled, setDisabled] = useState(true);
+
+  const theme = useTheme();
 
   return (
     <Layout hideNavigation>
@@ -47,20 +39,14 @@ export default function SignIn() {
             label="Mot de passe"
             secureTextEntry
           />
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <Text
-              style={{ color: theme.colors.primary }}
-              onPress={() => navigation.push("ForgotPassword")}
-            >
+          <View style={{ flexDirection: "row" }}>
+            <Button mode="text" textColor={theme.colors.primary}>
               Mot de passe oublié
-            </Text>
+            </Button>
             <Button
               mode="contained"
               icon="login-variant"
-              disabled={disabled}
-              onPress={() => signIn({ email, password })}
+              onPress={() => navigation.push("SignUp")}
             >
               Se connecter
             </Button>
@@ -70,3 +56,7 @@ export default function SignIn() {
     </Layout>
   );
 }
+
+SignIn.propTypes = {
+  navigation: PropTypes.any,
+};

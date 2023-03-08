@@ -1,20 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
-import { Button, SegmentedButtons, TextInput } from "react-native-paper";
-import DateTimePickerInput from "../../components/Input/DateTimePickerInput";
-import Main from "../../components/Main";
-import { AuthContext } from "../../context/AuthContext";
+import {
+  Button,
+  SegmentedButtons,
+  TextInput,
+  useTheme,
+} from "react-native-paper";
+import DateTimePickerInput from "../../../components/Input/DateTimePickerInput";
+import Layout from "../../../components/Layout";
+import { AuthContext } from "../../../context/AuthContext";
 
 export default function Profile() {
+  const theme = useTheme();
+
   const { signOut } = useContext(AuthContext);
-  
+
   const [birthdate, setBirthdate] = useState(new Date());
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
 
   return (
-    <Main title="Vous">
+    <Layout title="Vous">
       <ScrollView>
         <View style={{ rowGap: 15 }}>
           <View style={{ rowGap: 10 }}>
@@ -50,11 +57,11 @@ export default function Profile() {
               inputMode="decimal"
             />
           </View>
-          <Button icon="logout" onPress={signOut}>
+          <Button textColor={theme.colors.error} icon="logout" onPress={signOut}>
             Déconnexion
           </Button>
         </View>
       </ScrollView>
-    </Main>
+    </Layout>
   );
 }

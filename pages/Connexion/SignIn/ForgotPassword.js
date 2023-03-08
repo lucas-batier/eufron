@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { TextInput, Button, useTheme, Text } from "react-native-paper";
-import Main from "../../../components/Main";
+import Layout from "../../../components/Layout";
 import { useNavigation } from "@react-navigation/native";
 
 export default function ForgotPassword() {
@@ -12,7 +12,7 @@ export default function ForgotPassword() {
   const theme = useTheme();
 
   return (
-    <Main hideNavigation>
+    <Layout hideNavigation>
       <View style={{ rowGap: 15 }}>
         <Text>Recevez un lien de réinitialisation par mail</Text>
         <View style={{ rowGap: 10, marginTop: 10 }}>
@@ -35,6 +35,6 @@ export default function ForgotPassword() {
           </View>
         </View>
       </View>
-    </Main>
+    </Layout>
   );
 }

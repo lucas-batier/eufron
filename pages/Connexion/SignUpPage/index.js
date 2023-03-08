@@ -1,18 +1,13 @@
-import { useContext, useState } from "react";
-import { View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import { TextInput, Button, IconButton } from "react-native-paper";
 import Layout from "../../../components/Layout";
-import { AuthContext } from "../../../context/AuthContext";
 
 export default function SignUp() {
-  const { signUp } = useContext(AuthContext);
-
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
 
   const [disabled, setDisabled] = useState(true);
-
-  // @todo start another stack with action through header
 
   return (
     <Layout hideNavigation>
@@ -45,12 +40,8 @@ export default function SignUp() {
             label="Mot de passe"
             secureTextEntry
           />
-          <Button
-            mode="contained"
-            icon="login-variant"
-            disabled={disabled}
-            onPress={() => signUp({ email, password })}
-          >
+
+          <Button mode="contained" icon="login-variant">
             Se connecter
           </Button>
         </View>
