@@ -1,6 +1,12 @@
 import { useState } from "react";
-import { ScrollView, View } from "react-native";
-import { TextInput, Button } from "react-native-paper";
+import { ScrollView, StyleSheet, View } from "react-native";
+import {
+  TextInput,
+  Button,
+  IconButton,
+  Text,
+  SegmentedButtons,
+} from "react-native-paper";
 import Layout from "../../../components/Layout";
 
 export default function SignUpProfileName() {
@@ -12,6 +18,15 @@ export default function SignUpProfileName() {
   return (
     <Layout
       title="Infos"
+      actions={[
+        {
+          icon: "check",
+          label: "Valider",
+          disabled: disabled,
+          onPress: () => console.log("Sign in actions here @todo"),
+        },
+      ]}
+      onPressBackAction={() => console.log("Back actions here @todo")}
       hideNavigation
     >
       <ScrollView>

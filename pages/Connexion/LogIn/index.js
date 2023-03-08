@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { ImageBackground, View } from "react-native";
 import { Text, Button, IconButton } from "react-native-paper";
-import Main from "../../../components/Main";
+import Layout from "../../../components/Layout";
 
 export default function LogIn() {
   const navigation = useNavigation();
@@ -11,7 +11,7 @@ export default function LogIn() {
   };
 
   return (
-    <Main fullWidth fullHeight hideNavigation statusBarStyle="light">
+    <Layout fullWidth fullHeight hideNavigation statusBarStyle="light">
       <ImageBackground
         source={image}
         resizeMode="cover"
@@ -82,6 +82,6 @@ export default function LogIn() {
           />
         </View>
       </View>
-    </Main>
+    </Layout>
   );
 }

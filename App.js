@@ -6,8 +6,10 @@ import Connexion from "./pages/Connexion";
 import Loading from "./pages/Loading";
 import { useEffect, useMemo, useReducer } from "react";
 import { AuthContext } from "./context/AuthContext";
-import Home from "./pages/Home";
-import Header from "./components/Main/Header";
+import Home from "./pages/Main/Home";
+import Header from "./components/Layout/Header";
+import Main from "./pages/Main";
+import { theme } from "./theme";
 
 const Stack = createStackNavigator();
 
@@ -90,7 +92,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={authContext}>
       <SafeAreaProvider>
-        <PaperProvider>
+        <PaperProvider theme={theme}>
           <NavigationContainer>
             <Stack.Navigator
               screenOptions={{
@@ -121,12 +123,12 @@ export default function App() {
                 />
               ) : (
                 <Stack.Screen
-                  name="Home"
+                  name="Main"
                   options={{
                     title: "Eufron",
                     presentation: "transparentModal",
                   }}
-                  component={Home}
+                  component={Main}
                 />
               )}
             </Stack.Navigator>
