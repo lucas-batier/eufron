@@ -6,14 +6,10 @@ import Layout from "../../../components/Layout";
 export default function LogIn() {
   const navigation = useNavigation();
 
-  const image = {
-    uri: "https://images.pexels.com/photos/3766211/pexels-photo-3766211.jpeg", // @todo store in assets
-  };
-
   return (
     <Layout fullWidth fullHeight hideNavigation statusBarStyle="light">
       <ImageBackground
-        source={image}
+        source={require("../../../assets/login-page.jpeg")}
         resizeMode="cover"
         style={{
           flex: 1,
