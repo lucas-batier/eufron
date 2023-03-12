@@ -7,10 +7,12 @@ import { AuthContext } from "../../../context/AuthContext";
 export default function SignUp() {
   const { signUp } = useContext(AuthContext);
 
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
 
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   // @todo start another stack with action through header
 
@@ -33,11 +35,17 @@ export default function SignUp() {
         </View>
         <View style={{ rowGap: 10, marginTop: 10 }}>
           <TextInput
+            onChangeText={setFirstname}
+            value={firstname}
+            label="Prénom"
+            autoFocus
+          />
+          <TextInput onChangeText={setLastname} value={lastname} label="Nom" />
+          <TextInput
             onChangeText={onChangeEmail}
             value={email}
             label="Email"
             inputMode="email"
-            autoFocus
           />
           <TextInput
             onChangeText={onChangePassword}
