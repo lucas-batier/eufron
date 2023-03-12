@@ -12,7 +12,7 @@ export default function SignUp() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
 
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
   // @todo start another stack with action through header
 
