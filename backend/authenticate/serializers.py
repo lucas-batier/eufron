@@ -65,7 +65,7 @@ class SignUpSerializer(serializers.Serializer):
                     message = _('Your account exists but has been deactivated.')
                     errors['non_field_error'] = message
         else:
-            message = _('Must include "first_name", "last_name", "username" and "password".')
+            message = _('Must include "username" and "password".')
             errors['non_field_error'] = message
 
         if errors:
