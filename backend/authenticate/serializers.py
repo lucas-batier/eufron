@@ -14,7 +14,7 @@ from .models import User
 class SignUpSerializer(serializers.Serializer):
     username = serializers.EmailField(
         label=_("username"),
-        write_only=True
+        write_only=True,
     )
     password = serializers.CharField(
         label=_("Password"),
@@ -24,15 +24,15 @@ class SignUpSerializer(serializers.Serializer):
     )
     first_name = serializers.CharField(
         label=_("First name"),
-        write_only=True
+        write_only=True,
     )
     last_name = serializers.CharField(
         label=_("Last name"),
-        write_only=True
+        write_only=True,
     )
     token = serializers.CharField(
         label=_("Token"),
-        read_only=True
+        read_only=True,
     )
 
     def validate(self, attrs):
