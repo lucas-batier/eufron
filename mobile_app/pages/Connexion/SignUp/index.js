@@ -7,12 +7,12 @@ import { AuthContext } from "../../../context/AuthContext";
 export default function SignUp() {
   const { signUp } = useContext(AuthContext);
 
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
 
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   // @todo start another stack with action through header
 
@@ -36,28 +36,38 @@ export default function SignUp() {
         <View style={{ rowGap: 10, marginTop: 10 }}>
           <TextInput
             onChangeText={setFirstname}
-            value={firstname}
+            value={firstName}
             label="Prénom"
+            autoComplete="given-name"
             autoFocus
           />
-          <TextInput onChangeText={setLastname} value={lastname} label="Nom" />
+          <TextInput
+            onChangeText={setLastname}
+            value={lastName}
+            label="Nom"
+            autoComplete="family-name"
+          />
           <TextInput
             onChangeText={onChangeEmail}
             value={email}
             label="Email"
             inputMode="email"
+            autoCapitalize="none"
           />
           <TextInput
             onChangeText={onChangePassword}
             value={password}
             label="Mot de passe"
+            autoComplete="new-password"
             secureTextEntry
           />
           <Button
             mode="contained"
             icon="login-variant"
             disabled={disabled}
-            onPress={() => signUp({ email, password })}
+            onPress={() =>
+              signUp({ firstName, lastName, username: email, password })
+            }
           >
             Se connecter
           </Button>

@@ -39,12 +39,14 @@ export default function SignIn() {
             value={email}
             label="Email"
             inputMode="email"
+            autoCapitalize="none"
             autoFocus
           />
           <TextInput
             onChangeText={onChangePassword}
             value={password}
             label="Mot de passe"
+            autoComplete="current-password"
             secureTextEntry
           />
           <View
@@ -60,7 +62,7 @@ export default function SignIn() {
               mode="contained"
               icon="login-variant"
               disabled={disabled}
-              onPress={() => signIn({ email, password })}
+              onPress={() => signIn({ username: email, password })}
             >
               Se connecter
             </Button>

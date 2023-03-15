@@ -21,6 +21,8 @@ export default function ForgotPassword() {
             value={email}
             label="Email"
             inputMode="email"
+            autoCapitalize="none"
+            autoComplete="email"
             autoFocus
           />
           <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>

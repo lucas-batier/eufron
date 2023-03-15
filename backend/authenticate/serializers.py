@@ -38,6 +38,8 @@ class SignUpSerializer(serializers.Serializer):
     def validate(self, attrs):
         username = attrs.get('username')
         password = attrs.get('password')
+        first_name = attrs.get('first_name')
+        last_name = attrs.get('last_name')
 
         errors = {}
 
@@ -47,11 +49,13 @@ class SignUpSerializer(serializers.Serializer):
             messages = [_(error_message) for error_message in e.messages]
             errors['password'] = messages
             
-        if username and password:
+        if first_name and last_name and username and password:
             user, created = User.objects.get_or_create(username=username, email=username)
             
             if created:
                 user.set_password(password)
+                user.first_name = first_name
+                user.last_name = first_name
                 user.save()
             else:
                 if user.is_active:

@@ -20,4 +20,5 @@ class SignUpView(APIView):
         token, created = Token.objects.get_or_create(user=user)
         return Response({'token': token.key})
 
+
 sign_up_view = SignUpView.as_view()
