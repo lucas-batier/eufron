@@ -62,13 +62,13 @@ export default function App() {
         let userToken;
         const response = await signin(data);
         if (response.ok) {
-          const token = await response.json().token;
-          userToken = await SecureStore.setItemAsync("userToken", token);
+          const data = await response.json();
+          userToken = await SecureStore.setItemAsync("userToken", data.token);
+
+          dispatch({ type: "SIGN_IN", token: userToken });
         } else {
           // @todo manage error message on form
         }
-
-        dispatch({ type: "SIGN_IN", token: userToken });
       },
       signOut: () => {
         SecureStore.deleteItemAsync("userToken");
@@ -79,14 +79,15 @@ export default function App() {
         const response = await signup(data);
 
         if (response.ok) {
-          const token = await response.json().token;
-          userToken = await SecureStore.setItemAsync("userToken", token);
+          const data = await response.json();
+          userToken = await SecureStore.setItemAsync("userToken", data.token);
+
+          dispatch({ type: "SIGN_IN", token: userToken });
         } else {
           const data = await response.json();
+          console.log(data)
           // @todo manage error message on form
         }
-
-        dispatch({ type: "SIGN_IN", token: userToken });
       },
     }),
     []
