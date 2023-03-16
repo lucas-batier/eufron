@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import {
   TextInput,
@@ -6,6 +6,8 @@ import {
   useTheme,
   IconButton,
   Text,
+  HelperText,
+  Surface,
 } from "react-native-paper";
 import Layout from "../../../components/Layout";
 import { useNavigation } from "@react-navigation/native";
@@ -14,11 +16,20 @@ import { AuthContext } from "../../../context/AuthContext";
 export default function SignIn() {
   const theme = useTheme();
   const navigation = useNavigation();
-  const { signIn } = useContext(AuthContext);
+  const { signIn, errors } = useContext(AuthContext);
 
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
-  const [disabled, setDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSignIn = () => {
+    setIsLoading(true);
+    signIn({ username: email, password });
+  };
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [signIn]);
 
   return (
     <Layout hideNavigation>
@@ -34,21 +45,42 @@ export default function SignIn() {
           <IconButton icon="apple" mode="contained" size={40} />
         </View>
         <View style={{ rowGap: 10, marginTop: 10 }}>
-          <TextInput
-            onChangeText={onChangeEmail}
-            value={email}
-            label="Email"
-            inputMode="email"
-            autoCapitalize="none"
-            autoFocus
-          />
-          <TextInput
-            onChangeText={onChangePassword}
-            value={password}
-            label="Mot de passe"
-            autoComplete="current-password"
-            secureTextEntry
-          />
+          {errors?.non_field_errors?.map((error, id) => (
+            <View key={id} style={{ marginLeft: 15 }}>
+              <Text style={{ color: theme.colors.error }}>{error}</Text>
+            </View>
+          ))}
+          <View>
+            <TextInput
+              onChangeText={onChangeEmail}
+              value={email}
+              label="Email"
+              inputMode="email"
+              autoCapitalize="none"
+              error={errors?.username}
+              autoFocus
+            />
+            {errors?.username?.map((error, id) => (
+              <HelperText key={id} type="error">
+                {error}
+              </HelperText>
+            ))}
+          </View>
+          <View>
+            <TextInput
+              onChangeText={onChangePassword}
+              value={password}
+              label="Mot de passe"
+              autoComplete="current-password"
+              secureTextEntry
+              error={errors?.password}
+            />
+            {errors?.password?.map((error, id) => (
+              <HelperText key={id} type="error">
+                {error}
+              </HelperText>
+            ))}
+          </View>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
@@ -60,9 +92,9 @@ export default function SignIn() {
             </Text>
             <Button
               mode="contained"
-              icon="login-variant"
-              disabled={disabled}
-              onPress={() => signIn({ username: email, password })}
+              icon={isLoading ? "loading" : "login-variant"}
+              disabled={isLoading}
+              onPress={handleSignIn}
             >
               Se connecter
             </Button>

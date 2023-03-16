@@ -22,6 +22,7 @@ export default function App() {
           return {
             ...prevState,
             userToken: action.token,
+            errors: action.errors,
             isLoading: false,
           };
         case "SIGN_IN":
@@ -29,18 +30,21 @@ export default function App() {
             ...prevState,
             isSignout: false,
             userToken: action.token,
+            errors: action.errors,
           };
         case "SIGN_OUT":
           return {
             ...prevState,
             isSignout: true,
             userToken: null,
+            errors: null,
           };
       }
     },
     {
       isLoading: true,
       isSignout: false,
+      errors: null,
       userToken: null,
     }
   );
@@ -65,9 +69,10 @@ export default function App() {
           const data = await response.json();
           userToken = await SecureStore.setItemAsync("userToken", data.token);
 
-          dispatch({ type: "SIGN_IN", token: userToken });
+          dispatch({ type: "SIGN_IN", token: userToken, errors: null });
         } else {
-          // @todo manage error message on form
+          const errors = await response.json();
+          dispatch({ type: "SIGN_IN", token: null, errors: errors });
         }
       },
       signOut: () => {
@@ -82,15 +87,15 @@ export default function App() {
           const data = await response.json();
           userToken = await SecureStore.setItemAsync("userToken", data.token);
 
-          dispatch({ type: "SIGN_IN", token: userToken });
+          dispatch({ type: "SIGN_IN", token: userToken, errors: null });
         } else {
-          const data = await response.json();
-          console.log(data)
-          // @todo manage error message on form
+          const errors = await response.json();
+          dispatch({ type: "SIGN_IN", token: null, errors: errors });
         }
       },
+      errors: state.errors,
     }),
-    []
+    [state.errors]
   );
 
   return (
@@ -109,13 +114,13 @@ export default function App() {
                 <Stack.Screen
                   name="Loading"
                   options={{
-                    title: "Loading",
+                    title: "Chargement",
                     presentation: "transparentModal",
                     headerShown: false,
                   }}
                   component={Loading}
                 />
-              ) : !state.userToken ? (
+              ) : state.userToken === null ? (
                 <Stack.Screen
                   name="Connexion"
                   component={Connexion}

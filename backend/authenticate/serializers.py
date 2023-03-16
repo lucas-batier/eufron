@@ -57,15 +57,15 @@ class SignUpSerializer(serializers.Serializer):
                     if user.check_password(password):
                         message = _(
                             'An account with those credentials already exists.')
-                        errors['non_field_error'] = message
+                        errors['non_field_errors'] = message
                     else:
                         message = _(
                             'An account with this username already exists but the password is incorrect.')
-                        errors['non_field_error'] = message
+                        errors['non_field_errors'] = message
                 else:
                     message = _(
                         'Your account exists but has been deactivated.')
-                    errors['non_field_error'] = message
+                    errors['non_field_errors'] = message
 
             except User.DoesNotExist as e:
                 user = User(
@@ -78,7 +78,7 @@ class SignUpSerializer(serializers.Serializer):
         else:
             message = _(
                 'Must include "first_name", "last_name", "username" and "password".')
-            errors['non_field_error'] = message
+            errors['non_field_errors'] = message
 
         if errors:
             raise serializers.ValidationError(errors)
