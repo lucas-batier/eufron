@@ -38,6 +38,8 @@ class SignUpSerializer(serializers.Serializer):
     def validate(self, attrs):
         username = attrs.get('username')
         password = attrs.get('password')
+        first_name = attrs.get('first_name')
+        last_name = attrs.get('last_name')
 
         errors = {}
 
@@ -46,27 +48,37 @@ class SignUpSerializer(serializers.Serializer):
         except exceptions.ValidationError as e:
             messages = [_(error_message) for error_message in e.messages]
             errors['password'] = messages
-            
-        if username and password:
-            user, created = User.objects.get_or_create(username=username, email=username)
-            
-            if created:
-                user.set_password(password)
-                user.save()
-            else:
+
+        if first_name and last_name and username and password:
+            try:
+                user = User.objects.get(username=username, email=username)
+
                 if user.is_active:
                     if user.check_password(password):
-                        message = _('An account with those credentials already exists.')
-                        errors['non_field_error'] = message
+                        message = _(
+                            'An account with those credentials already exists.')
+                        errors['non_field_errors'] = message
                     else:
-                        message = _('An account with this username already exists but the password is incorrect.')
-                        errors['non_field_error'] = message
+                        message = _(
+                            'An account with this username already exists but the password is incorrect.')
+                        errors['non_field_errors'] = message
                 else:
-                    message = _('Your account exists but has been deactivated.')
-                    errors['non_field_error'] = message
+                    message = _(
+                        'Your account exists but has been deactivated.')
+                    errors['non_field_errors'] = message
+
+            except User.DoesNotExist as e:
+                user = User(
+                    username=username,
+                    email=username,
+                    first_name=first_name,
+                    last_name=last_name
+                )
+                user.set_password(password)
         else:
-            message = _('Must include "username" and "password".')
-            errors['non_field_error'] = message
+            message = _(
+                'Must include "first_name", "last_name", "username" and "password".')
+            errors['non_field_errors'] = message
 
         if errors:
             raise serializers.ValidationError(errors)

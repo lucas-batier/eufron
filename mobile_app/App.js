@@ -9,6 +9,8 @@ import { AuthContext } from "./context/AuthContext";
 import Header from "./components/Layout/Header";
 import Main from "./pages/Main";
 import { theme } from "./theme";
+import { signin, signup } from "./api/authenticate";
+import * as SecureStore from "expo-secure-store";
 
 const Stack = createStackNavigator();
 
@@ -20,6 +22,7 @@ export default function App() {
           return {
             ...prevState,
             userToken: action.token,
+            errors: action.errors,
             isLoading: false,
           };
         case "SIGN_IN":
@@ -27,38 +30,30 @@ export default function App() {
             ...prevState,
             isSignout: false,
             userToken: action.token,
+            errors: action.errors,
           };
         case "SIGN_OUT":
           return {
             ...prevState,
             isSignout: true,
             userToken: null,
+            errors: null,
           };
       }
     },
     {
       isLoading: true,
       isSignout: false,
+      errors: null,
       userToken: null,
     }
   );
 
   useEffect(() => {
-    // Fetch the token from storage then navigate to our appropriate place
     const bootstrapAsync = async () => {
       let userToken;
+      userToken = await SecureStore.getItemAsync("userToken");
 
-      try {
-        // Restore token stored in `SecureStore` or any other encrypted storage
-        // userToken = await SecureStore.getItemAsync('userToken');
-      } catch (e) {
-        // Restoring token failed
-      }
-
-      // After restoring token, we may need to validate it in production apps
-
-      // This will switch to the App screen or Auth screen and this loading
-      // screen will be unmounted and thrown away.
       dispatch({ type: "RESTORE_TOKEN", token: userToken });
     };
 
@@ -68,24 +63,39 @@ export default function App() {
   const authContext = useMemo(
     () => ({
       signIn: async (data) => {
-        // In a production app, we need to send some data (usually username, password) to server and get a token
-        // We will also need to handle errors if sign in failed
-        // After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
-        // In the example, we'll use a dummy token
+        let userToken;
+        const response = await signin(data);
+        if (response.ok) {
+          const data = await response.json();
+          userToken = await SecureStore.setItemAsync("userToken", data.token);
 
-        dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
+          dispatch({ type: "SIGN_IN", token: userToken, errors: null });
+        } else {
+          const errors = await response.json();
+          dispatch({ type: "SIGN_IN", token: null, errors: errors });
+        }
       },
-      signOut: () => dispatch({ type: "SIGN_OUT" }),
+      signOut: () => {
+        SecureStore.deleteItemAsync("userToken");
+        dispatch({ type: "SIGN_OUT" });
+      },
       signUp: async (data) => {
-        // In a production app, we need to send user data to server and get a token
-        // We will also need to handle errors if sign up failed
-        // After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
-        // In the example, we'll use a dummy token
+        let userToken;
+        const response = await signup(data);
 
-        dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
+        if (response.ok) {
+          const data = await response.json();
+          userToken = await SecureStore.setItemAsync("userToken", data.token);
+
+          dispatch({ type: "SIGN_IN", token: userToken, errors: null });
+        } else {
+          const errors = await response.json();
+          dispatch({ type: "SIGN_IN", token: null, errors: errors });
+        }
       },
+      errors: state.errors,
     }),
-    []
+    [state.errors]
   );
 
   return (
@@ -104,13 +114,13 @@ export default function App() {
                 <Stack.Screen
                   name="Loading"
                   options={{
-                    title: "Loading",
+                    title: "Chargement",
                     presentation: "transparentModal",
                     headerShown: false,
                   }}
                   component={Loading}
                 />
-              ) : state.userToken == null ? (
+              ) : state.userToken === null ? (
                 <Stack.Screen
                   name="Connexion"
                   component={Connexion}
