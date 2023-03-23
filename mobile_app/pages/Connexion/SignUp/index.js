@@ -68,7 +68,7 @@ export default function SignUp() {
             />
             {errors?.first_name?.map((error, id) => (
               <HelperText key={id} type="error">
-                {error}
+                {t(error)}
               </HelperText>
             ))}
           </View>
@@ -82,7 +82,7 @@ export default function SignUp() {
             />
             {errors?.last_name?.map((error, id) => (
               <HelperText key={id} type="error">
-                {error}
+                {t(error)}
               </HelperText>
             ))}
           </View>
@@ -97,7 +97,7 @@ export default function SignUp() {
             />
             {errors?.username?.map((error, id) => (
               <HelperText key={id} type="error">
-                {error}
+                {t(error)}
               </HelperText>
             ))}
           </View>

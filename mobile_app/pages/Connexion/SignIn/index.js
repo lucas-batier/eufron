@@ -7,7 +7,6 @@ import {
   IconButton,
   Text,
   HelperText,
-  Surface,
 } from "react-native-paper";
 import Layout from "../../../components/Layout";
 import { useNavigation } from "@react-navigation/native";
@@ -64,7 +63,7 @@ export default function SignIn() {
             />
             {errors?.username?.map((error, id) => (
               <HelperText key={id} type="error">
-                {error}
+                {t(error)}
               </HelperText>
             ))}
           </View>
@@ -79,7 +78,7 @@ export default function SignIn() {
             />
             {errors?.password?.map((error, id) => (
               <HelperText key={id} type="error">
-                {error}
+                {t(error)}
               </HelperText>
             ))}
           </View>

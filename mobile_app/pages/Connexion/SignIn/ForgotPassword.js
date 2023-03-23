@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { TextInput, Button, useTheme, Text } from "react-native-paper";
 import Layout from "../../../components/Layout";
 
 export default function ForgotPassword() {
+  const { t } = useTranslation();
   const [email, onChangeEmail] = useState("");
   const { forgotPassword, errors } = useContext(AuthContext);
 
@@ -38,7 +40,7 @@ export default function ForgotPassword() {
             />
             {errors?.username?.map((error, id) => (
               <HelperText key={id} type="error">
-                {error}
+                {t(error)}
               </HelperText>
             ))}
           </View>
