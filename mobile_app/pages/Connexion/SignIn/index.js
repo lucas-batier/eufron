@@ -12,8 +12,10 @@ import {
 import Layout from "../../../components/Layout";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 export default function SignIn() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const navigation = useNavigation();
   const { signIn, errors } = useContext(AuthContext);
@@ -47,14 +49,14 @@ export default function SignIn() {
         <View style={{ rowGap: 10, marginTop: 10 }}>
           {errors?.non_field_errors?.map((error, id) => (
             <View key={id} style={{ marginLeft: 15 }}>
-              <Text style={{ color: theme.colors.error }}>{error}</Text>
+              <Text style={{ color: theme.colors.error }}>{t(error)}</Text>
             </View>
           ))}
           <View>
             <TextInput
               onChangeText={onChangeEmail}
               value={email}
-              label="Email"
+              label={t("connexion.signin.form.email")}
               inputMode="email"
               autoCapitalize="none"
               error={errors?.username}
@@ -70,7 +72,7 @@ export default function SignIn() {
             <TextInput
               onChangeText={onChangePassword}
               value={password}
-              label="Mot de passe"
+              label={t("connexion.signin.form.password")}
               autoComplete="current-password"
               secureTextEntry
               error={errors?.password}
@@ -88,7 +90,7 @@ export default function SignIn() {
               style={{ color: theme.colors.primary }}
               onPress={() => navigation.push("ForgotPassword")}
             >
-              Mot de passe oublié
+              {t("connexion.signin.form.button.forgot_password")}
             </Text>
             <Button
               mode="contained"
@@ -96,7 +98,7 @@ export default function SignIn() {
               disabled={isLoading}
               onPress={handleSignIn}
             >
-              Se connecter
+              {t("connexion.signin.form.button.signin")}
             </Button>
           </View>
         </View>

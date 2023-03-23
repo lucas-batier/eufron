@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import {
   TextInput,
@@ -12,6 +13,7 @@ import Layout from "../../../components/Layout";
 import { AuthContext } from "../../../context/AuthContext";
 
 export default function SignUp() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const { signUp, errors } = useContext(AuthContext);
 
@@ -52,16 +54,16 @@ export default function SignUp() {
         <View style={{ rowGap: 10, marginTop: 10 }}>
           {errors?.non_field_errors?.map((error, id) => (
             <View key={id} style={{ marginLeft: 15 }}>
-              <Text style={{ color: theme.colors.error }}>{error}</Text>
+              <Text style={{ color: theme.colors.error }}>{t(error)}</Text>
             </View>
           ))}
           <View>
             <TextInput
               onChangeText={setFirstname}
               value={firstName}
-              label="Prénom"
+              label={t("connexion.signup.form.first_name")}
               autoComplete="given-name"
-              error={errors?.first_name}
+              error={t(errors?.first_name)}
               autoFocus
             />
             {errors?.first_name?.map((error, id) => (
@@ -74,9 +76,9 @@ export default function SignUp() {
             <TextInput
               onChangeText={setLastname}
               value={lastName}
-              label="Nom"
+              label={t("connexion.signup.form.last_name")}
               autoComplete="family-name"
-              error={errors?.last_name}
+              error={t(errors?.last_name)}
             />
             {errors?.last_name?.map((error, id) => (
               <HelperText key={id} type="error">
@@ -88,10 +90,10 @@ export default function SignUp() {
             <TextInput
               onChangeText={onChangeEmail}
               value={email}
-              label="Email"
+              label={t("connexion.signup.form.email")}
               inputMode="email"
               autoCapitalize="none"
-              error={errors?.username}
+              error={t(errors?.username)}
             />
             {errors?.username?.map((error, id) => (
               <HelperText key={id} type="error">
@@ -103,14 +105,14 @@ export default function SignUp() {
             <TextInput
               onChangeText={onChangePassword}
               value={password}
-              label="Mot de passe"
+              label={t("connexion.signup.form.password")}
               autoComplete="new-password"
               secureTextEntry
-              error={errors?.password}
+              error={t(errors?.password)}
             />
             {errors?.password?.map((error, id) => (
               <HelperText key={id} type="error">
-                {error}
+                {t(error)}
               </HelperText>
             ))}
           </View>
@@ -120,7 +122,7 @@ export default function SignUp() {
             disabled={isLoading}
             onPress={handleSignUp}
           >
-            Se connecter
+            {t("connexion.signup.form.button")}
           </Button>
         </View>
       </View>

@@ -23,13 +23,13 @@ export default function ForgotPassword() {
   return (
     <Layout hideNavigation>
       <View style={{ rowGap: 15 }}>
-        <Text>Recevez un lien de réinitialisation par mail</Text>
+        <Text>{t("connexion.signin.forgot_password.title")}</Text>
         <View style={{ rowGap: 10, marginTop: 10 }}>
           <View>
             <TextInput
               onChangeText={onChangeEmail}
               value={email}
-              label="Email"
+              label={t("connexion.signin.forgot_password.form.email")}
               inputMode="email"
               autoCapitalize="none"
               autoComplete="email"
@@ -49,7 +49,7 @@ export default function ForgotPassword() {
               disabled={isLoading}
               onPress={handleForgotPassword}
             >
-              Envoyer
+              {t("connexion.signin.forgot_password.form.button")}
             </Button>
           </View>
         </View>

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ScrollView, Text, View } from "react-native";
 import {
   Button,
@@ -11,6 +12,7 @@ import Layout from "../../../components/Layout";
 import { AuthContext } from "../../../context/AuthContext";
 
 export default function Profile() {
+  const { t } = useTranslation();
   const theme = useTheme();
 
   const { signOut } = useContext(AuthContext);
@@ -26,19 +28,28 @@ export default function Profile() {
         <View style={{ rowGap: 15 }}>
           <View style={{ rowGap: 10 }}>
             <View style={{ rowGap: 5 }}>
-              <Text>Genre</Text>
+              <Text>{t("main.profile.form.gender.title")}</Text>
               <SegmentedButtons
                 value={gender}
                 onValueChange={setGender}
                 buttons={[
-                  { value: "F", label: "Femme" },
-                  { value: "M", label: "Homme" },
-                  { value: "", label: "Autres" },
+                  {
+                    value: "F",
+                    label: t("main.profile.form.gender.choices.female"),
+                  },
+                  {
+                    value: "M",
+                    label: t("main.profile.form.gender.choices.male"),
+                  },
+                  {
+                    value: "",
+                    label: t("main.profile.form.gender.choices.others"),
+                  },
                 ]}
               />
             </View>
             <DateTimePickerInput
-              label="Anniversaire"
+              label={t("main.profile.form.birthdate")}
               mode="date"
               maximumDate={new Date(new Date().getFullYear(), 12, 31)}
               date={birthdate}
@@ -47,18 +58,22 @@ export default function Profile() {
             <TextInput
               onChangeText={setHeight}
               value={height}
-              label="Taille (cm)"
+              label={t("main.profile.form.height")}
               inputMode="decimal"
             />
             <TextInput
               onChangeText={setWeight}
               value={weight}
-              label="Poids (kg)"
+              label={t("main.profile.form.weight")}
               inputMode="decimal"
             />
           </View>
-          <Button textColor={theme.colors.error} icon="logout" onPress={signOut}>
-            Déconnexion
+          <Button
+            textColor={theme.colors.error}
+            icon="logout"
+            onPress={signOut}
+          >
+            {t("main.profile.form.button.logout")}
           </Button>
         </View>
       </ScrollView>

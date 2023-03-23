@@ -2,8 +2,10 @@ import { useNavigation } from "@react-navigation/native";
 import { ImageBackground, View } from "react-native";
 import { Text, Button, IconButton } from "react-native-paper";
 import Layout from "../../../components/Layout";
+import { useTranslation } from "react-i18next";
 
 export default function LogIn() {
+  const { t } = useTranslation();
   const navigation = useNavigation();
 
   return (
@@ -31,7 +33,7 @@ export default function LogIn() {
             }}
             variant="headlineMedium"
           >
-            Bienvenue
+            {t("connexion.login.welcome")}
           </Text>
           <Text
             style={{
@@ -40,7 +42,7 @@ export default function LogIn() {
             }}
             variant="bodyLarge"
           >
-            Eufron est entre vos mains 👋
+            {t("connexion.login.message")}
           </Text>
         </View>
       </ImageBackground>
@@ -52,15 +54,15 @@ export default function LogIn() {
           marginHorizontal: 30,
         }}
       >
-        <Text>Habitué ?</Text>
+        <Text>{t("connexion.login.signin.title")}</Text>
         <Button
           mode="contained"
           icon="login-variant"
           onPress={() => navigation.push("SignIn")}
         >
-          Se connecter
+          {t("connexion.login.signin.button")}
         </Button>
-        <Text>Nouvel arrivé ?</Text>
+        <Text>{t("connexion.login.signup.title")}</Text>
         <View
           style={{
             flexDirection: "row",

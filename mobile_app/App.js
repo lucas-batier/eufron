@@ -11,6 +11,8 @@ import Main from "./pages/Main";
 import { theme } from "./theme";
 import { signin, signup } from "./api/authenticate";
 import * as SecureStore from "expo-secure-store";
+import { I18nextProvider } from "react-i18next";
+import i18n from './i18n';
 
 const Stack = createStackNavigator();
 
@@ -101,48 +103,50 @@ export default function App() {
   return (
     <AuthContext.Provider value={authContext}>
       <SafeAreaProvider>
-        <PaperProvider theme={theme}>
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{
-                header: ({ options, navigation }) => {
-                  return <Header options={options} navigation={navigation} />;
-                },
-              }}
-            >
-              {state.isLoading ? (
-                <Stack.Screen
-                  name="Loading"
-                  options={{
-                    title: "Chargement",
-                    presentation: "transparentModal",
-                    headerShown: false,
-                  }}
-                  component={Loading}
-                />
-              ) : state.userToken === null ? (
-                <Stack.Screen
-                  name="Connexion"
-                  component={Connexion}
-                  options={{
-                    title: "Connexion",
-                    presentation: "transparentModal",
-                    headerShown: false,
-                  }}
-                />
-              ) : (
-                <Stack.Screen
-                  name="Main"
-                  options={{
-                    title: "Eufron",
-                    presentation: "transparentModal",
-                  }}
-                  component={Main}
-                />
-              )}
-            </Stack.Navigator>
-          </NavigationContainer>
-        </PaperProvider>
+        <I18nextProvider>
+          <PaperProvider theme={theme}>
+            <NavigationContainer>
+              <Stack.Navigator
+                screenOptions={{
+                  header: ({ options, navigation }) => {
+                    return <Header options={options} navigation={navigation} />;
+                  },
+                }}
+              >
+                {state.isLoading ? (
+                  <Stack.Screen
+                    name="Loading"
+                    options={{
+                      title: "Chargement",
+                      presentation: "transparentModal",
+                      headerShown: false,
+                    }}
+                    component={Loading}
+                  />
+                ) : state.userToken === null ? (
+                  <Stack.Screen
+                    name="Connexion"
+                    component={Connexion}
+                    options={{
+                      title: "Connexion",
+                      presentation: "transparentModal",
+                      headerShown: false,
+                    }}
+                  />
+                ) : (
+                  <Stack.Screen
+                    name="Main"
+                    options={{
+                      title: "Eufron",
+                      presentation: "transparentModal",
+                    }}
+                    component={Main}
+                  />
+                )}
+              </Stack.Navigator>
+            </NavigationContainer>
+          </PaperProvider>
+        </I18nextProvider>
       </SafeAreaProvider>
     </AuthContext.Provider>
   );
