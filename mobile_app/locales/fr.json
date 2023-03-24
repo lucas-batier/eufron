@@ -2,7 +2,7 @@
   "connexion": {
     "login": {
       "welcome": "Bienvenue",
-      "message": "Eufron est entre vos mains 👋",
+      "message": "Eufron est entre vos mains 🙌",
       "signin": { "title": "Habitué ?", "button": "Se connecter" },
       "signup": { "title": "Nouvel arrivé ?" }
     },

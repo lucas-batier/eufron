@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
+from django.urls import path, include
 from rest_framework.authtoken import views as authtoken_views
 
 from .views import sign_up_view
@@ -22,4 +22,5 @@ from .views import sign_up_view
 urlpatterns = [
     path('signin', authtoken_views.obtain_auth_token),
     path('signup', sign_up_view),
+    path('password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 ]

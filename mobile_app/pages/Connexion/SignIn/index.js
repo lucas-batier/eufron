@@ -82,15 +82,13 @@ export default function SignIn() {
               </HelperText>
             ))}
           </View>
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <Text
-              style={{ color: theme.colors.primary }}
+          <View style={{ rowGap: 10, marginTop: 10 }}>
+            <Button
+              disabled={isLoading}
               onPress={() => navigation.push("ForgotPassword")}
             >
               {t("connexion.signin.form.button.forgot_password")}
-            </Text>
+            </Button>
             <Button
               mode="contained"
               icon={isLoading ? "loading" : "login-variant"}

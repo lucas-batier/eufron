@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { TextInput, Button, useTheme, Text } from "react-native-paper";
 import Layout from "../../../components/Layout";
+import { AuthContext } from "../../../context/AuthContext";
 
 export default function ForgotPassword() {
   const { t } = useTranslation();
@@ -44,7 +45,7 @@ export default function ForgotPassword() {
               </HelperText>
             ))}
           </View>
-          <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+          <View>
             <Button
               mode="contained"
               icon={isLoading ? "loading" : "send"}
