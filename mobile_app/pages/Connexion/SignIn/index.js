@@ -19,18 +19,18 @@ export default function SignIn() {
   const navigation = useNavigation();
   const { signIn, errors } = useContext(AuthContext);
 
-  const [email, onChangeEmail] = useState("");
-  const [password, onChangePassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [signIn]);
 
   const handleSignIn = () => {
     setIsLoading(true);
     signIn({ username: email, password });
   };
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, [signIn]);
 
   return (
     <Layout hideNavigation>
@@ -53,7 +53,7 @@ export default function SignIn() {
           ))}
           <View>
             <TextInput
-              onChangeText={onChangeEmail}
+              onChangeText={setEmail}
               value={email}
               label={t("connexion.signin.form.email")}
               inputMode="email"
@@ -69,7 +69,7 @@ export default function SignIn() {
           </View>
           <View>
             <TextInput
-              onChangeText={onChangePassword}
+              onChangeText={setPassword}
               value={password}
               label={t("connexion.signin.form.password")}
               autoComplete="current-password"
@@ -85,9 +85,9 @@ export default function SignIn() {
           <View style={{ rowGap: 10, marginTop: 10 }}>
             <Button
               disabled={isLoading}
-              onPress={() => navigation.push("ForgotPassword")}
+              onPress={() => navigation.push("ResetPassword")}
             >
-              {t("connexion.signin.form.button.forgot_password")}
+              {t("connexion.signin.form.button.reset_password")}
             </Button>
             <Button
               mode="contained"

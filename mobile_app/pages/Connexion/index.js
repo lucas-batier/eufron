@@ -3,7 +3,7 @@ import SignUp from "./SignUp";
 import { createStackNavigator } from "@react-navigation/stack";
 import Header from "../../components/Layout/Header";
 import LogIn from "./LogIn";
-import ForgotPassword from "./SignIn/ForgotPassword";
+import ResetPassword from "./SignIn/ResetPassword";
 
 const Stack = createStackNavigator();
 
@@ -40,8 +40,8 @@ export default function Connexion() {
         }}
       />
       <Stack.Screen
-        name="ForgotPassword"
-        component={ForgotPassword}
+        name="ResetPassword"
+        component={ResetPassword}
         options={{
           title: "Mot de passe oublié",
         }}

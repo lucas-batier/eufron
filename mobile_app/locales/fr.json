@@ -7,15 +7,25 @@
       "signup": { "title": "Nouvel arrivé ?" }
     },
     "signin": {
-      "forgot_password": {
-        "title": "Recevez un lien de réinitialisation par mail",
-        "form": { "email": "Email", "button": "Envoyer" }
+      "reset_password": {
+        "request_token": {
+          "title": "Recevez un code de réinitialisation par email",
+          "form": { "email": "Email", "button": "Envoyer" }
+        },
+        "validate_token": {
+          "title": "Code envoyé ! Entrez le code de réinitialisation reçu par email",
+          "form": { "token": "Code", "button": "Valider" }
+        },
+        "confirm": {
+          "title": "Recevez un code de réinitialisation par email",
+          "form": { "email": "Email", "button": "Envoyer" }
+        }
       },
       "form": {
         "email": "Email",
         "password": "Mot de passe",
         "button": {
-          "forgot_password": "Mot de passe oublié",
+          "reset_password": "Mot de passe oublié",
           "signin": "Se connecter"
         }
       }

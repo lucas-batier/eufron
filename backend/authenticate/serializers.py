@@ -22,14 +22,6 @@ class SignUpSerializer(serializers.Serializer):
         trim_whitespace=False,
         write_only=True,
     )
-    first_name = serializers.CharField(
-        label=_("First name"),
-        write_only=True,
-    )
-    last_name = serializers.CharField(
-        label=_("Last name"),
-        write_only=True,
-    )
     token = serializers.CharField(
         label=_("Token"),
         read_only=True,
@@ -38,8 +30,6 @@ class SignUpSerializer(serializers.Serializer):
     def validate(self, attrs):
         username = attrs.get('username')
         password = attrs.get('password')
-        first_name = attrs.get('first_name')
-        last_name = attrs.get('last_name')
 
         errors = {}
 
@@ -49,9 +39,9 @@ class SignUpSerializer(serializers.Serializer):
             messages = [_(error_message) for error_message in e.messages]
             errors['password'] = messages
 
-        if first_name and last_name and username and password:
+        if username and password:
             try:
-                user = User.objects.get(username=username, email=username)
+                user = User.objects.get(email=username)
 
                 if user.is_active:
                     if user.check_password(password):
@@ -68,12 +58,7 @@ class SignUpSerializer(serializers.Serializer):
                     errors['non_field_errors'] = message
 
             except User.DoesNotExist as e:
-                user = User(
-                    username=username,
-                    email=username,
-                    first_name=first_name,
-                    last_name=last_name
-                )
+                user = User(email=username)
                 user.set_password(password)
         else:
             message = _(
