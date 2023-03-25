@@ -29,3 +29,16 @@ export const signup = async ({ firstName, lastName, username, password }) => {
     }),
   });
 };
+
+export const reset_password_request_token = async ({ email }) => {
+  return fetch(base_url + `/authenticate/password_reset`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+    }),
+  });
+};
