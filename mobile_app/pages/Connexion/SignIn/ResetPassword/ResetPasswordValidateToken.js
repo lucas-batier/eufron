@@ -8,14 +8,22 @@ import {
   HelperText,
   useTheme,
 } from "react-native-paper";
-import { resetPasswordValidateToken } from "../../../../api/authenticate/resetPassword";
+import {
+  resetPasswordRequestToken,
+  resetPasswordValidateToken,
+} from "../../../../api/authenticate/resetPassword";
 import Layout from "../../../../components/Layout";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default function ResetPasswordValidateToken() {
   const { t } = useTranslation();
+  const navigation = useNavigation();
   const theme = useTheme();
+  const route = useRoute();
 
-  const [token, onChangeToken] = useState("");
+  const { email } = route.params;
+
+  const [token, setToken] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -23,8 +31,18 @@ export default function ResetPasswordValidateToken() {
     setIsLoading(true);
     resetPasswordValidateToken({ token }).then((response) => {
       if (response.ok) {
-        navigation.push("ResetPasswordConfirm", { token });
+        navigation.push("ResetPasswordConfirm", { email, token });
       } else {
+        response.json().then((errors) => setErrors(errors));
+      }
+      setIsLoading(false);
+    });
+  };
+
+  const handleResetPasswordRequestToken = () => {
+    setIsLoading(true);
+    resetPasswordRequestToken({ email }).then((response) => {
+      if (!response.ok) {
         response.json().then((errors) => setErrors(errors));
       }
       setIsLoading(false);
@@ -45,7 +63,7 @@ export default function ResetPasswordValidateToken() {
           )}
           <View>
             <TextInput
-              onChangeText={onChangeToken}
+              onChangeText={setToken}
               value={token}
               label={t(
                 "connexion.signin.reset_password.validate_token.form.token"
@@ -61,14 +79,24 @@ export default function ResetPasswordValidateToken() {
               </HelperText>
             ))}
           </View>
-          <View>
+          <View style={{ rowGap: 10, marginTop: 10 }}>
+            <Button
+              disabled={isLoading}
+              onPress={handleResetPasswordRequestToken}
+            >
+              {t(
+                "connexion.signin.reset_password.validate_token.form.button.resend"
+              )}
+            </Button>
             <Button
               mode="contained"
               icon={isLoading ? "loading" : "arrow-right"}
               disabled={isLoading}
               onPress={handleResetPasswordValidateToken}
             >
-              {t("connexion.signin.reset_password.validate_token.form.button")}
+              {t(
+                "connexion.signin.reset_password.validate_token.form.button.validate"
+              )}
             </Button>
           </View>
         </View>

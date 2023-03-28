@@ -14,11 +14,11 @@ export default function ResetPasswordRequestToken() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const handleResetPassword = () => {
+  const handleResetPasswordRequestToken = () => {
     setIsLoading(true);
     resetPasswordRequestToken({ email }).then((response) => {
       if (response.ok) {
-        navigation.navigate("ResetPasswordValidateToken");
+        navigation.navigate("ResetPasswordValidateToken", { email });
       } else {
         response.json().then((errors) => setErrors(errors));
       }
@@ -50,12 +50,12 @@ export default function ResetPasswordRequestToken() {
               </HelperText>
             ))}
           </View>
-          <View>
+          <View style={{ marginTop: 10 }}>
             <Button
               mode="contained"
               icon={isLoading ? "loading" : "send"}
               disabled={isLoading}
-              onPress={handleResetPassword}
+              onPress={handleResetPasswordRequestToken}
             >
               {t("connexion.signin.reset_password.request_token.form.button")}
             </Button>

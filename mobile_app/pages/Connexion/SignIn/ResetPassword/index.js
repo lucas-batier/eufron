@@ -1,4 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import ResetPasswordConfirm from "./ResetPasswordConfirm";
 import ResetPasswordRequestToken from "./ResetPasswordRequestToken";
 import ResetPasswordValidateToken from "./ResetPasswordValidateToken";
 
@@ -27,6 +28,14 @@ export default function ResetPassword() {
         component={ResetPasswordValidateToken}
         options={{
           title: "Code de réinitialisation",
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ResetPasswordConfirm"
+        component={ResetPasswordConfirm}
+        options={{
+          title: "Réinitialisation",
           headerShown: false,
         }}
       />

@@ -136,6 +136,8 @@ DJANGO_REST_PASSWORDRESET_TOKEN_CONFIG = {
     }
 }
 
+DJANGO_REST_MULTITOKENAUTH_RESET_TOKEN_EXPIRY_TIME = 0.25
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -164,10 +166,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 APPEND_SLASH = False
 
 # SMTP Mail service with decouple
-SMTP_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-SMTP_EMAIL_HOST = "smtp.gmail.com"
-SMTP_EMAIL_PORT = 587
-SMTP_EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = os.environ.get('EMAIL_ACCOUNT')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')

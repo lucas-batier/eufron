@@ -85,14 +85,16 @@ export default function SignUp() {
               </HelperText>
             ))}
           </View>
-          <Button
-            mode="contained"
-            icon={isLoading ? "loading" : "login-variant"}
-            disabled={isLoading}
-            onPress={handleSignUp}
-          >
-            {t("connexion.signup.form.button")}
-          </Button>
+          <View style={{ marginTop: 10 }}>
+            <Button
+              mode="contained"
+              icon={isLoading ? "loading" : "login-variant"}
+              disabled={isLoading}
+              onPress={handleSignUp}
+            >
+              {t("connexion.signup.form.button")}
+            </Button>
+          </View>
         </View>
       </View>
     </Layout>

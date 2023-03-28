@@ -14,11 +14,20 @@
         },
         "validate_token": {
           "title": "Code envoyé ! Entrez le code de réinitialisation reçu par email",
-          "form": { "token": "Code", "button": "Valider" }
+          "form": {
+            "token": "Code",
+            "button": {
+              "validate": "Valider",
+              "resend": "Renvoyer le code"
+            }
+          }
         },
         "confirm": {
-          "title": "Recevez un code de réinitialisation par email",
-          "form": { "email": "Email", "button": "Envoyer" }
+          "title": "Entrez votre nouveau mot de passe",
+          "form": {
+            "password": "Nouveau mot de passe",
+            "button": "Réinitialiser"
+          }
         }
       },
       "form": {

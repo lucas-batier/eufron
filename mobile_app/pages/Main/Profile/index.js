@@ -68,13 +68,15 @@ export default function Profile() {
               inputMode="decimal"
             />
           </View>
-          <Button
-            textColor={theme.colors.error}
-            icon="logout"
-            onPress={signOut}
-          >
-            {t("main.profile.form.button.logout")}
-          </Button>
+          <View style={{ marginTop: 10 }}>
+            <Button
+              textColor={theme.colors.error}
+              icon="logout"
+              onPress={signOut}
+            >
+              {t("main.profile.form.button.logout")}
+            </Button>
+          </View>
         </View>
       </ScrollView>
     </Layout>
