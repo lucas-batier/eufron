@@ -58,6 +58,7 @@ export default function SignIn() {
               label={t("connexion.signin.form.email")}
               inputMode="email"
               autoCapitalize="none"
+              autoComplete="email"
               error={errors?.username}
               autoFocus
             />

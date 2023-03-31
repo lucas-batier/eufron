@@ -62,6 +62,7 @@ export default function SignUp() {
               label={t("connexion.signup.form.email")}
               inputMode="email"
               autoCapitalize="none"
+              autoComplete="email"
               error={t(errors?.username)}
             />
             {errors?.username?.map((error, id) => (
