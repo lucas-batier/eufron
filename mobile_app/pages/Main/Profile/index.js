@@ -18,7 +18,7 @@ export default function Profile() {
   const { signOut } = useContext(AuthContext);
 
   const [birthdate, setBirthdate] = useState(new Date());
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState({});
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
 
@@ -28,7 +28,6 @@ export default function Profile() {
         <View style={{ rowGap: 15 }}>
           <View style={{ rowGap: 10 }}>
             <View style={{ rowGap: 5 }}>
-              <Text>{t("main.profile.form.gender.title")}</Text>
               <SegmentedButtons
                 value={gender}
                 onValueChange={setGender}
@@ -36,14 +35,20 @@ export default function Profile() {
                   {
                     value: "F",
                     label: t("main.profile.form.gender.choices.female"),
+                    checkedColor: theme.colors.primary,
+                    style: { borderWidth: 0 },
                   },
                   {
                     value: "M",
                     label: t("main.profile.form.gender.choices.male"),
+                    checkedColor: theme.colors.primary,
+                    style: { borderWidth: 0 },
                   },
                   {
                     value: "",
                     label: t("main.profile.form.gender.choices.others"),
+                    checkedColor: theme.colors.primary,
+                    style: { borderWidth: 0 },
                   },
                 ]}
               />

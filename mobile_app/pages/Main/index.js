@@ -13,6 +13,7 @@ export default function Main() {
     <Tab.Navigator
       initialRouteName="Home"
       activeColor={theme.colors.primary}
+      inactiveColor={theme.colors.onSurface}
       shifting={false}
     >
       <Tab.Screen
