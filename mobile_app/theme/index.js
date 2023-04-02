@@ -1,6 +1,6 @@
 import { DefaultTheme } from "react-native-paper";
 
-// positive #00A675
+// Positive: #00A675
 
 const defaultTheme = {
   ...DefaultTheme,
@@ -15,9 +15,9 @@ const defaultTheme = {
     onSecondary: "#FDFDF7",
     secondaryContainer: "transparent",
     onSecondaryContainer: "#061403",
-    tertiary: "#00C972",
+    tertiary: "#9714AB",
     onTertiary: "#FDFDF7",
-    tertiaryContainer: "#00C972",
+    tertiaryContainer: "#9714AB",
     onTertiaryContainer: "#061403",
     error: "#D11B3A",
     onError: "#FDFDF7",
