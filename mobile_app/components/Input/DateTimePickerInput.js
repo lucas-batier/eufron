@@ -9,6 +9,7 @@ export default function DateTimePickerInput({
   date,
   maximumDate,
   minimumDate,
+  textColor,
   label,
   placeholder,
   autoFocus,
@@ -42,6 +43,7 @@ export default function DateTimePickerInput({
         placeholder={placeholder}
         autoFocus={autoFocus}
         onPressIn={showDatePicker}
+        textColor={textColor}
         right={
           <TextInput.Icon
             icon={mode === "time" ? "clock" : "calendar"}
@@ -67,6 +69,7 @@ DateTimePickerInput.propTypes = {
   date: PropTypes.instanceOf(Date),
   maximumDate: PropTypes.instanceOf(Date),
   minimumDate: PropTypes.instanceOf(Date),
+  textColor: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,

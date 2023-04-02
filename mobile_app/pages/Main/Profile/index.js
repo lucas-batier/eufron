@@ -10,6 +10,8 @@ import {
 import DateTimePickerInput from "../../../components/Input/DateTimePickerInput";
 import Layout from "../../../components/Layout";
 import { AuthContext } from "../../../context/AuthContext";
+import DropDown from "react-native-paper-dropdown";
+
 
 export default function Profile() {
   const { t } = useTranslation();
@@ -19,6 +21,9 @@ export default function Profile() {
 
   const [birthdate, setBirthdate] = useState(new Date());
   const [gender, setGender] = useState({});
+  const [showGenderDropDown, setShowGenderDropDown] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
 
@@ -27,50 +32,67 @@ export default function Profile() {
       <ScrollView>
         <View style={{ rowGap: 15 }}>
           <View style={{ rowGap: 10 }}>
-            <View style={{ rowGap: 5 }}>
-              <SegmentedButtons
-                value={gender}
-                onValueChange={setGender}
-                buttons={[
-                  {
-                    value: "F",
-                    label: t("main.profile.form.gender.choices.female"),
-                    checkedColor: theme.colors.primary,
-                    style: { borderWidth: 0 },
-                  },
-                  {
-                    value: "M",
-                    label: t("main.profile.form.gender.choices.male"),
-                    checkedColor: theme.colors.primary,
-                    style: { borderWidth: 0 },
-                  },
-                  {
-                    value: "",
-                    label: t("main.profile.form.gender.choices.others"),
-                    checkedColor: theme.colors.primary,
-                    style: { borderWidth: 0 },
-                  },
-                ]}
-              />
-            </View>
+            <TextInput
+              onChangeText={setFirstName}
+              value={firstName}
+              label={t("main.profile.form.first_name")}
+              autoComplete="given-name"
+              textColor={theme.colors.onSurface}
+            />
+            <TextInput
+              onChangeText={setLastName}
+              value={lastName}
+              label={t("main.profile.form.last_name")}
+              autoComplete="family-name"
+              textColor={theme.colors.onSurface}
+            />
+            <DropDown
+              label={t("main.profile.form.gender.title")}
+              mode="flat"
+              visible={showGenderDropDown}
+              showDropDown={() => setShowGenderDropDown(true)}
+              onDismiss={() => setShowGenderDropDown(false)}
+              value={gender}
+              inputProps={{textColor: theme.colors.onSurface}}
+              setValue={setGender}
+              list={[
+                {
+                  value: "female",
+                  label: t("main.profile.form.gender.choices.female"),
+                },
+                {
+                  value: "male",
+                  label: t("main.profile.form.gender.choices.male"),
+                },
+                {
+                  value: "other",
+                  label: t("main.profile.form.gender.choices.others"),
+                },
+              ]}
+            />
             <DateTimePickerInput
               label={t("main.profile.form.birthdate")}
               mode="date"
               maximumDate={new Date(new Date().getFullYear(), 12, 31)}
               date={birthdate}
               onChange={setBirthdate}
+              textColor={theme.colors.onSurface}
             />
             <TextInput
               onChangeText={setHeight}
               value={height}
               label={t("main.profile.form.height")}
-              inputMode="decimal"
+              keyboardType="decimal-pad"
+              returnKeyType="done"
+              textColor={theme.colors.onSurface}
             />
             <TextInput
               onChangeText={setWeight}
               value={weight}
               label={t("main.profile.form.weight")}
-              inputMode="decimal"
+              keyboardType="decimal-pad"
+              returnKeyType="done"
+              textColor={theme.colors.onSurface}
             />
           </View>
           <View style={{ marginTop: 10 }}>

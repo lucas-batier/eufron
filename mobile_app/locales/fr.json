@@ -1,4 +1,7 @@
 {
+  "form": {
+    "done": "Terminée"
+  },
   "connexion": {
     "login": {
       "welcome": "Bienvenue",
@@ -52,7 +55,10 @@
   "main": {
     "profile": {
       "form": {
+        "first_name": "Prénom",
+        "last_name": "Nom",
         "gender": {
+          "title": "Genre",
           "choices": {
             "female": "Femme",
             "male": "Homme",

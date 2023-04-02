@@ -1,6 +1,6 @@
 import { DefaultTheme } from "react-native-paper";
 
-// Positive: #00A675
+// Positive: #00BA6A
 
 const defaultTheme = {
   ...DefaultTheme,
@@ -28,7 +28,7 @@ const defaultTheme = {
     surface: "#FDFDF7",
     onSurface: "#061403",
     surfaceVariant: "transparent",
-    onSurfaceVariant: "#31432D",
+    onSurfaceVariant: "#686F67",
     outline: "#061403",
     outlineVariant: "rgb(192, 201, 0)",
     shadow: "#061403",
