@@ -1,5 +1,7 @@
 import { DefaultTheme } from "react-native-paper";
 
+// positive #00A675
+
 const defaultTheme = {
   ...DefaultTheme,
   roundness: 0,
@@ -17,6 +19,10 @@ const defaultTheme = {
     onTertiary: "#FDFDF7",
     tertiaryContainer: "#00C972",
     onTertiaryContainer: "#061403",
+    error: "#D11B3A",
+    onError: "#FDFDF7",
+    errorContainer: "#D11B3A",
+    onErrorContainer: "#061403",
     background: "#FDFDF7",
     onBackground: "#061403",
     surface: "#FDFDF7",
