@@ -23,7 +23,7 @@ export default function Profile() {
   const [weight, setWeight] = useState("");
 
   return (
-    <Layout title="Vous">
+    <Layout>
       <ScrollView>
         <View style={{ rowGap: 15 }}>
           <View style={{ rowGap: 10 }}>

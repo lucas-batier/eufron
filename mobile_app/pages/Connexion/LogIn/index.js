@@ -9,7 +9,7 @@ export default function LogIn() {
   const navigation = useNavigation();
 
   return (
-    <Layout fullWidth fullHeight hideNavigation statusBarStyle="light">
+    <Layout fullWidth hideNavigation statusBarStyle="light">
       <ImageBackground
         source={require("../../../assets/login-page.jpeg")}
         resizeMode="cover"

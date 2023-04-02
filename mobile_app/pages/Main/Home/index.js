@@ -1,10 +1,15 @@
-import { View } from "react-native";
+import { ScrollView } from "react-native";
 import { Text } from "react-native-paper";
+import React from "react";
+import Layout from "../../../components/Layout";
 
 export default function Home() {
+
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <Layout>
+      <ScrollView>
+        <Text>Home</Text>
+      </ScrollView>
+    </Layout>
   );
 }

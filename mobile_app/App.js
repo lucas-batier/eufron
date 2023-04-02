@@ -103,11 +103,11 @@ export default function App() {
   );
 
   return (
-    <AuthContext.Provider value={authContext}>
+    <PaperProvider theme={theme}>
       <SafeAreaProvider>
-        <I18nextProvider>
-          <PaperProvider theme={theme}>
-            <NavigationContainer>
+        <AuthContext.Provider value={authContext}>
+          <I18nextProvider>
+            <NavigationContainer theme={theme}>
               <Stack.Navigator
                 screenOptions={{
                   header: ({ options, navigation }) => {
@@ -147,9 +147,9 @@ export default function App() {
                 )}
               </Stack.Navigator>
             </NavigationContainer>
-          </PaperProvider>
-        </I18nextProvider>
+          </I18nextProvider>
+        </AuthContext.Provider>
       </SafeAreaProvider>
-    </AuthContext.Provider>
+    </PaperProvider>
   );
 }

@@ -1,10 +1,13 @@
-import { View } from "react-native";
+import { ScrollView } from "react-native";
 import { Text } from "react-native-paper";
+import Layout from "../../../components/Layout";
 
 export default function Courses() {
   return (
-    <View>
-      <Text>Courses</Text>
-    </View>
+    <Layout>
+      <ScrollView>
+        <Text>Courses</Text>
+      </ScrollView>
+    </Layout>
   );
 }

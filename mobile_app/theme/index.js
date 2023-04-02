@@ -17,7 +17,7 @@ const defaultTheme = {
     onTertiary: "#FDFDF7",
     tertiaryContainer: "#00C972",
     onTertiaryContainer: "#061403",
-    background: "#061403",
+    background: "#FDFDF7",
     onBackground: "#061403",
     surface: "#FDFDF7",
     onSurface: "#061403",

@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 export default function Layout({
   children,
   fullWidth,
-  fullHeight,
   hideStatusBar,
   statusBarStyle,
 }) {
@@ -20,7 +19,6 @@ export default function Layout({
         style={{
           flex: 1,
           paddingHorizontal: fullWidth ? 0 : 30,
-          paddingTop: fullHeight ? 0 : 20,
         }}
       >
         {children}
@@ -33,7 +31,6 @@ export default function Layout({
 Layout.propTypes = {
   children: PropTypes.node,
   fullWidth: PropTypes.bool,
-  fullHeight: PropTypes.bool,
   hideStatusBar: PropTypes.bool,
   statusBarStyle: PropTypes.oneOf(["auto", "inverted", "light", "dark"]),
 };
