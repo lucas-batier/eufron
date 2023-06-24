@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import {
-  TextInput,
   Button,
   Text,
   HelperText,
@@ -14,6 +13,7 @@ import {
 } from "../../../../api/authenticate/resetPassword";
 import Layout from "../../../../components/Layout";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import TextInput from "../../../../components/Input/TextInput";
 
 export default function ResetPasswordValidateToken() {
   const { t } = useTranslation();
@@ -51,11 +51,11 @@ export default function ResetPasswordValidateToken() {
 
   return (
     <Layout hideNavigation>
-      <View style={{ rowGap: 15 }}>
+      <View style={{ rowGap: 16 }}>
         <Text>{t("connexion.signin.reset_password.validate_token.title")}</Text>
-        <View style={{ rowGap: 10, marginTop: 10 }}>
+        <View style={{ rowGap: 8, marginTop: 8 }}>
           {errors?.detail && (
-            <View style={{ marginLeft: 15 }}>
+            <View style={{ marginBottom: 16 }}>
               <Text style={{ color: theme.colors.error }}>
                 {t(errors?.detail)}
               </Text>
@@ -79,7 +79,7 @@ export default function ResetPasswordValidateToken() {
               </HelperText>
             ))}
           </View>
-          <View style={{ rowGap: 10, marginTop: 10 }}>
+          <View style={{ rowGap: 8, marginTop: 8 }}>
             <Button
               disabled={isLoading}
               onPress={handleResetPasswordRequestToken}

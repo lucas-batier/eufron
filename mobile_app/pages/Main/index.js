@@ -28,7 +28,7 @@ export default function Main() {
               <MaterialCommunityIcons
                 name="home-outline"
                 color={color}
-                size={30}
+                size={32}
               />
             ),
         }}
@@ -45,7 +45,7 @@ export default function Main() {
               <MaterialCommunityIcons
                 name="calendar-outline"
                 color={color}
-                size={30}
+                size={32}
               />
             ),
         }}
@@ -62,7 +62,7 @@ export default function Main() {
               <MaterialCommunityIcons
                 name="account-outline"
                 color={color}
-                size={30}
+                size={32}
               />
             ),
         }}

@@ -1,7 +1,7 @@
 import { base_url } from "..";
 
 export const signin = async ({ username, password }) => {
-  return fetch(base_url + `/authenticate/signin`, {
+  return fetch(base_url + `authenticate/signin`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -15,7 +15,7 @@ export const signin = async ({ username, password }) => {
 };
 
 export const signup = async ({ firstName, lastName, username, password }) => {
-  return fetch(base_url + `/authenticate/signup`, {
+  return fetch(base_url + `authenticate/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",

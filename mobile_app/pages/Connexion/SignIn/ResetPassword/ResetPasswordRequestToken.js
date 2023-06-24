@@ -2,8 +2,9 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
-import { TextInput, Button, Text, HelperText } from "react-native-paper";
+import { Button, Text, HelperText } from "react-native-paper";
 import { resetPasswordRequestToken } from "../../../../api/authenticate/resetPassword";
+import TextInput from "../../../../components/Input/TextInput";
 import Layout from "../../../../components/Layout";
 
 export default function ResetPasswordRequestToken() {
@@ -28,9 +29,9 @@ export default function ResetPasswordRequestToken() {
 
   return (
     <Layout hideNavigation>
-      <View style={{ rowGap: 15 }}>
+      <View style={{ rowGap: 16 }}>
         <Text>{t("connexion.signin.reset_password.request_token.title")}</Text>
-        <View style={{ rowGap: 10, marginTop: 10 }}>
+        <View style={{ marginTop: 8 }}>
           <View>
             <TextInput
               onChangeText={setEmail}
@@ -41,6 +42,7 @@ export default function ResetPasswordRequestToken() {
               inputMode="email"
               autoCapitalize="none"
               autoComplete="email"
+              placeholder={"jessicabdos@eufron.fr"}
               error={errors?.email}
               autoFocus
             />
@@ -50,7 +52,7 @@ export default function ResetPasswordRequestToken() {
               </HelperText>
             ))}
           </View>
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 8 }}>
             <Button
               mode="contained"
               icon={isLoading ? "loading" : "send"}

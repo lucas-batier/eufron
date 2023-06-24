@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import {
-  TextInput,
   Button,
   useTheme,
   IconButton,
@@ -12,6 +11,7 @@ import Layout from "../../../components/Layout";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../../context/AuthContext";
 import { useTranslation } from "react-i18next";
+import TextInput from "../../../components/Input/TextInput";
 
 export default function SignIn() {
   const { t } = useTranslation();
@@ -34,7 +34,7 @@ export default function SignIn() {
 
   return (
     <Layout hideNavigation>
-      <View style={{ rowGap: 15 }}>
+      <View>
         <View
           style={{
             flexDirection: "row",
@@ -45,9 +45,9 @@ export default function SignIn() {
           <IconButton icon="facebook" mode="contained" size={40} />
           <IconButton icon="apple" mode="contained" size={40} />
         </View>
-        <View style={{ rowGap: 10, marginTop: 10 }}>
+        <View style={{ marginTop: 8 }}>
           {errors?.non_field_errors?.map((error, id) => (
-            <View key={id} style={{ marginLeft: 15 }}>
+            <View key={id} style={{ marginBottom: 16 }}>
               <Text style={{ color: theme.colors.error }}>{t(error)}</Text>
             </View>
           ))}
@@ -59,7 +59,7 @@ export default function SignIn() {
               inputMode="email"
               autoCapitalize="none"
               autoComplete="email"
-              error={errors?.username}
+              placeholder={"jessicabdos@eufron.fr"}
               autoFocus
             />
             {errors?.username?.map((error, id) => (
@@ -75,7 +75,7 @@ export default function SignIn() {
               label={t("connexion.signin.form.password")}
               autoComplete="current-password"
               secureTextEntry
-              error={errors?.password}
+              placeholder={"********"}
             />
             {errors?.password?.map((error, id) => (
               <HelperText key={id} type="error">
@@ -83,7 +83,7 @@ export default function SignIn() {
               </HelperText>
             ))}
           </View>
-          <View style={{ rowGap: 10, marginTop: 10 }}>
+          <View style={{ rowGap: 8, marginTop: 8 }}>
             <Button
               disabled={isLoading}
               onPress={() => navigation.push("ResetPassword")}

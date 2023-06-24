@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { ImageBackground, View } from "react-native";
-import { Text, Button, IconButton } from "react-native-paper";
+import { Text, Button, IconButton, useTheme } from "react-native-paper";
 import Layout from "../../../components/Layout";
 import { useTranslation } from "react-i18next";
 
@@ -9,7 +9,7 @@ export default function LogIn() {
   const navigation = useNavigation();
 
   return (
-    <Layout fullWidth hideNavigation statusBarStyle="light">
+    <Layout fullWidth fullHeight hideNavigation statusBarStyle="light">
       <ImageBackground
         source={require("../../../assets/login-page.jpeg")}
         resizeMode="cover"
@@ -22,14 +22,14 @@ export default function LogIn() {
             flex: 1,
             backgroundColor: "rgba(0,0,0, 0.45)",
             justifyContent: "flex-end",
-            paddingBottom: 10,
-            paddingHorizontal: 30,
+            paddingBottom: 8,
+            paddingHorizontal: 32,
           }}
         >
           <Text
             style={{
-              color: "#fff",
-              marginBottom: 5,
+              color: "#FFFFFF",
+              marginBottom: 8,
             }}
             variant="headlineMedium"
           >
@@ -37,8 +37,8 @@ export default function LogIn() {
           </Text>
           <Text
             style={{
-              color: "#fff",
-              marginVertical: 5,
+              color: "#FFFFFF",
+              marginVertical: 8,
             }}
             variant="bodyLarge"
           >
@@ -48,10 +48,10 @@ export default function LogIn() {
       </ImageBackground>
       <View
         style={{
-          minHeight: "40%",
-          rowGap: 15,
-          marginTop: 20,
-          marginHorizontal: 30,
+          minHeight: "33%",
+          rowGap: 16,
+          marginTop: 24,
+          marginHorizontal: 32,
         }}
       >
         <Text>{t("connexion.login.signin.title")}</Text>

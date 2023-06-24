@@ -1,7 +1,7 @@
 import { base_url } from "..";
 
 export const resetPasswordRequestToken = async ({ email }) => {
-  return fetch(base_url + `/authenticate/password_reset/`, {
+  return fetch(base_url + `authenticate/password_reset/`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -14,7 +14,7 @@ export const resetPasswordRequestToken = async ({ email }) => {
 };
 
 export const resetPasswordValidateToken = async ({ token }) => {
-  return fetch(base_url + `/authenticate/password_reset/validate_token/`, {
+  return fetch(base_url + `authenticate/password_reset/validate_token/`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -27,7 +27,7 @@ export const resetPasswordValidateToken = async ({ token }) => {
 };
 
 export const resetPasswordConfirmReset = async ({ token, password }) => {
-  return fetch(base_url + `/authenticate/password_reset/confirm/`, {
+  return fetch(base_url + `authenticate/password_reset/confirm/`, {
     method: "POST",
     headers: {
       Accept: "application/json",

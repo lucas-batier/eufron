@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import {
-  TextInput,
   Button,
   Text,
   HelperText,
@@ -12,6 +11,7 @@ import { resetPasswordConfirmReset } from "../../../../api/authenticate/resetPas
 import Layout from "../../../../components/Layout";
 import { AuthContext } from "../../../../context/AuthContext";
 import { useRoute } from "@react-navigation/native";
+import TextInput from "../../../../components/Input/TextInput";
 
 export default function ResetPasswordConfirm() {
   const { t } = useTranslation();
@@ -39,11 +39,11 @@ export default function ResetPasswordConfirm() {
 
   return (
     <Layout hideNavigation>
-      <View style={{ rowGap: 15 }}>
+      <View style={{ rowGap: 16 }}>
         <Text>{t("connexion.signin.reset_password.confirm.title")}</Text>
-        <View style={{ rowGap: 10, marginTop: 10 }}>
+        <View style={{ marginTop: 8 }}>
           {errors?.non_field_errors && (
-            <View style={{ marginLeft: 15 }}>
+            <View style={{ marginBottom: 16 }}>
               <Text style={{ color: theme.colors.error }}>
                 {t(errors?.detail)}
               </Text>
@@ -56,6 +56,7 @@ export default function ResetPasswordConfirm() {
               label={t("connexion.signin.reset_password.confirm.form.password")}
               autoComplete="new-password"
               secureTextEntry
+              placeholder={"********"}
               error={errors?.password}
             />
             {errors?.password?.map((error, id) => (
@@ -64,7 +65,7 @@ export default function ResetPasswordConfirm() {
               </HelperText>
             ))}
           </View>
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 8 }}>
             <Button
               mode="contained"
               icon={isLoading ? "loading" : "check"}

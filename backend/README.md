@@ -24,8 +24,8 @@ https://www.python.org/downloads/
 `python manage.py migrate`
 5. Create the superuser
 `python manage.py createsuperuser`
-5. Launch the server
-`python manage.py runserver `
+5. Launch the server (the IP address works from the debug phone)
+`python manage.py runserver 192.168.1.121:8000`
 
 ## Tools
 

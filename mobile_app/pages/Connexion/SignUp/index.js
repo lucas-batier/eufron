@@ -2,13 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import {
-  TextInput,
   Button,
   IconButton,
   HelperText,
   Text,
   useTheme,
 } from "react-native-paper";
+import TextInput from "../../../components/Input/TextInput";
 import Layout from "../../../components/Layout";
 import { AuthContext } from "../../../context/AuthContext";
 
@@ -35,9 +35,6 @@ export default function SignUp() {
   return (
     <Layout hideNavigation>
       <View
-        style={{
-          rowGap: 15,
-        }}
       >
         <View
           style={{
@@ -49,9 +46,9 @@ export default function SignUp() {
           <IconButton icon="facebook" mode="contained" size={40} />
           <IconButton icon="apple" mode="contained" size={40} />
         </View>
-        <View style={{ rowGap: 10, marginTop: 10 }}>
+        <View style={{ marginTop: 8 }}>
           {errors?.non_field_errors?.map((error, id) => (
-            <View key={id} style={{ marginLeft: 15 }}>
+            <View key={id} style={{ marginBottom: 16 }}>
               <Text style={{ color: theme.colors.error }}>{t(error)}</Text>
             </View>
           ))}
@@ -63,6 +60,8 @@ export default function SignUp() {
               inputMode="email"
               autoCapitalize="none"
               autoComplete="email"
+              placeholder={"jessicabdos@eufron.fr"}
+              autoFocus
               error={t(errors?.username)}
             />
             {errors?.username?.map((error, id) => (
@@ -77,6 +76,7 @@ export default function SignUp() {
               value={password}
               label={t("connexion.signup.form.password")}
               autoComplete="new-password"
+              placeholder={"********"}
               secureTextEntry
               error={t(errors?.password)}
             />
@@ -86,7 +86,7 @@ export default function SignUp() {
               </HelperText>
             ))}
           </View>
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 8 }}>
             <Button
               mode="contained"
               icon={isLoading ? "loading" : "login-variant"}
