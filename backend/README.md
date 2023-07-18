@@ -17,7 +17,10 @@ https://www.python.org/downloads/
 2. Create a python virtual environment
 `python -m venv venv`
 3. Activate the environment
-`.\venv\Scripts\activate`
+- Windows:
+    `.\venv\Scripts\activate`
+- macOS: 
+    `source venv/bin/activate`
 4. Install requirements
 `pip install -r requirements`
 5. Initialize the database with migrations
